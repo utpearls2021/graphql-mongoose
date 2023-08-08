@@ -1,17 +1,20 @@
 import { ACCOUNT_STATUS, ACCOUNT_TYPE  } from "src/constants/db.constant";
-import { Field, InputType } from "@nestjs/graphql";
+import { Field, ID, InputType } from "@nestjs/graphql";
 import { IsOptional } from "class-validator";
 import { Address } from "./address.dto";
 
 @InputType()
-export class CreateUserDto {
-  @Field()
+export class UpdateUser {
+  @Field({ nullable: true })
+  @IsOptional()
   name: string;
 
-  @Field()
+  @Field({ nullable: true })
+  @IsOptional()
   email: string;
 
-  @Field()
+  @Field({ nullable: true })
+  @IsOptional()
   password: string;
 
   @Field({ nullable: true })
@@ -43,3 +46,12 @@ export class CreateUserDto {
   address: Address
 }
 
+
+@InputType()
+export class UpdateUserDto {
+  @Field(type => ID)
+  id: string;
+
+  @Field(() => UpdateUser)
+  update: UpdateUser
+}

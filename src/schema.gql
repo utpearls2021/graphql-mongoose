@@ -1,0 +1,75 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type address {
+  address1: String!
+  address2: String
+  city: String
+  country: String!
+  state: String
+  zipcode: String
+}
+
+type User {
+  name: String!
+  email: String!
+  password: String!
+  age: String!
+  status: String!
+  accountType: String!
+  social: [String!]!
+  isEmailVerified: Boolean!
+  _id: ID!
+  address: address!
+}
+
+type Query {
+  user(id: String!): User!
+  users: [User!]!
+}
+
+type Mutation {
+  createUser(user: CreateUserDto!): User!
+  updateUser(user: UpdateUserDto!): User!
+}
+
+input CreateUserDto {
+  name: String!
+  email: String!
+  password: String!
+  age: String
+  status: String
+  accountType: String
+  social: [String!]
+  isEmailVerified: Boolean
+  metadata: String
+  address: Address
+}
+
+input Address {
+  address1: String!
+  address2: String
+  city: String
+  country: String!
+  state: String
+  zipcode: String
+}
+
+input UpdateUserDto {
+  id: ID!
+  update: UpdateUser!
+}
+
+input UpdateUser {
+  name: String
+  email: String
+  password: String
+  age: String
+  status: String
+  accountType: String
+  social: [String!]
+  isEmailVerified: Boolean
+  metadata: String
+  address: Address
+}
