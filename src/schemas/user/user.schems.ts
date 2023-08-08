@@ -33,7 +33,7 @@ export class User {
     default: ACCOUNT_TYPE.STUDENT,
     immutable: true,
   })
-  accountType: ACCOUNT_STATUS;
+  accountType: ACCOUNT_TYPE;
 
   @Prop({ default: [] })
   social: string[]

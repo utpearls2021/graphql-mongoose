@@ -1,0 +1,21 @@
+### Create new user
+POST http://localhost:3000/users
+Content-Type: application/json
+
+{
+  "name" : "Utdev one",
+  "email": "test@getnada.com",
+  "password": "password",
+  "age": "30",
+  "status": "INACTIVE",
+  "accountType": "STUDENT",
+  "social": ["facebook", "twitter"],
+  "metadata": "test data",
+  "address": {
+    "address1": "nireem road 109",
+    "country": "Nepal"
+  }
+}
+
+### Get all user
+GET http://localhost:3000/users
