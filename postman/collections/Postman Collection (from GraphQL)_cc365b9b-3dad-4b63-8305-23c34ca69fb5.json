@@ -1,0 +1,84 @@
+{
+	"info": {
+		"_postman_id": "adbc0afd-8636-4fe9-8aa7-4e9d1a485f27",
+		"name": "Postman Collection (from GraphQL)",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "mutations",
+			"item": [
+				{
+					"name": "createUser",
+					"id": "dc0349aa-8ebc-419e-9342-44674eee08bc",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "mutation createUser ($user: CreateUserDto!) {\n    createUser (user: $user) {\n        name\n        email\n        password\n        age\n        status\n        accountType\n        social\n        isEmailVerified\n        _id\n    }\n}",
+								"variables": "{\n  \"user\": {\n     \"name\" : \"Utdev one\",\n    \"email\": \"test@getnada.com\",\n    \"password\": \"password\",\n    \"age\": \"30\",\n    \"status\": \"INACTIVE\",\n    \"accountType\": \"STUDENT\",\n    \"social\": [\"facebook\", \"twitter\"],\n    \"metadata\": \"test data\"\n  }\n}"
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/graphql",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"graphql"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"id": "0b03f75d-d026-4473-9026-1e646f403c07"
+		},
+		{
+			"name": "queries",
+			"item": [
+				{
+					"name": "users",
+					"id": "438d0a66-35f5-495c-9897-7bb97f25b2ac",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query users {\n    users {\n        name\n        email\n        age\n        status\n        accountType\n        social\n        isEmailVerified\n        _id\n    }\n}",
+								"variables": "{}"
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/graphql",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"graphql"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"id": "93b16527-320a-47f5-8273-227e761d240f"
+		}
+	],
+	"variable": [
+		{
+			"id": "url",
+			"key": "url",
+			"value": "",
+			"type": "any",
+			"description": "URL for the request."
+		}
+	]
+}
