@@ -1,0 +1,35 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type User {
+  name: String!
+  email: String!
+  password: String!
+  age: String!
+  status: String!
+  accountType: String!
+  social: [String!]!
+  isEmailVerified: Boolean!
+  _id: ID!
+}
+
+type Query {
+  users: [User!]!
+}
+
+type Mutation {
+  createUser(user: CreateUserDto!): User!
+}
+
+input CreateUserDto {
+  name: String!
+  email: String!
+  password: String!
+  age: String!
+  status: String!
+  accountType: String!
+  social: [String!]!
+  isEmailVerified: Boolean
+  metadata: String!
+}
