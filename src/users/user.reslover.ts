@@ -9,8 +9,8 @@ export class UserReslover {
   constructor(private userService: UsersService) {}
 
   @Query(returns => UserType)
-  user(@Args("id") id: string) {
-    return this.userService.getById(id);
+  async user(@Args("id") id: string) {
+    return await this.userService.getById(id);
   }
 
   @Query(returns => [UserType])

@@ -24,16 +24,16 @@ export class Address {
 
 @ObjectType("User")
 export class UserType {
-  @Field()
+  @Field({ nullable: true })
   name: string;
 
-  @Field()
+  @Field({ nullable: true })
   email: string;
 
   @Field()
   password: string;
 
-  @Field()
+  @Field({ nullable: true })
   age: string;
 
   @Field()

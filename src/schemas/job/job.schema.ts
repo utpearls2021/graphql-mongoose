@@ -4,7 +4,7 @@ import { Types, Document } from "mongoose";
 import { User, USER_MODEL } from "../user/user.schems";
 
 @Schema({
-  timestamps: true
+  timestamps: true,
 })
 export class Job {
   @Prop({ type: Types.ObjectId, ref: USER_MODEL, required: true})

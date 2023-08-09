@@ -12,10 +12,10 @@ type address {
 }
 
 type User {
-  name: String!
-  email: String!
+  name: String
+  email: String
   password: String!
-  age: String!
+  age: String
   status: String!
   accountType: String!
   social: [String!]!
@@ -24,14 +24,42 @@ type User {
   address: address!
 }
 
+type Job {
+  user_id: ID!
+  employer: User
+  title: String!
+  companyName: String!
+  description: String!
+  experience: String!
+  tags: [String!]!
+  salary: String!
+  status: String!
+  jobType: String!
+}
+
+type ResponseJobDto {
+  user_id: ID
+  employer: User
+  title: String
+  companyName: String
+  description: String
+  experience: String
+  tags: [String!]
+  salary: String
+  jobType: String
+}
+
 type Query {
   user(id: String!): User!
   users: [User!]!
+  jobs: [ResponseJobDto!]!
+  job(id: String!): Job!
 }
 
 type Mutation {
   createUser(user: CreateUserDto!): User!
   updateUser(user: UpdateUserDto!): User!
+  create(job: CreateJobDto!): Job!
 }
 
 input CreateUserDto {
@@ -72,4 +100,15 @@ input UpdateUser {
   isEmailVerified: Boolean
   metadata: String
   address: Address
+}
+
+input CreateJobDto {
+  userId: ID!
+  title: String!
+  companyName: String!
+  description: String!
+  experience: String!
+  tags: [String!]
+  salary: String!
+  jobType: String!
 }
