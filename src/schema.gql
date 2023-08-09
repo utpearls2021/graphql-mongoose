@@ -32,6 +32,7 @@ type Query {
 type Mutation {
   createUser(user: CreateUserDto!): User!
   updateUser(user: UpdateUserDto!): User!
+  uploadImage(image: Upload!): Boolean!
 }
 
 input CreateUserDto {
@@ -73,3 +74,6 @@ input UpdateUser {
   metadata: String
   address: Address
 }
+
+"""The `Upload` scalar type represents a file upload."""
+scalar Upload

@@ -6,6 +6,7 @@ import { JobsModule } from './jobs/jobs.module';
 import { MongooseModelModule } from './schemas/mongoose-model.module';
 import { GraphQLModule } from '@nestjs/graphql';
 import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
+import { FileuploadModule } from './fileupload/fileupload.module';
 import { join } from 'path';
 
 @Module({
@@ -18,8 +19,8 @@ import { join } from 'path';
     DatabaseModule,
     MongooseModelModule,
     UsersModule,
-    JobsModule
+    JobsModule,
+    FileuploadModule
   ],
 })
 export class AppModule {}import { graphql } from 'graphql';
-
