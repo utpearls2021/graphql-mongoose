@@ -28,4 +28,5 @@ export class CreateJobDto {
 
   @Field(type => String)
   jobType: JOB_TYPES
+
 }

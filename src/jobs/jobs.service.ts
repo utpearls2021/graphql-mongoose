@@ -3,9 +3,8 @@ import { InjectModel,  } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { JOB_MODEL, JobDocument } from 'src/schemas/job/job.schema';
 import { CreateJobDto } from './dtos/create-job.dto';
+import { UpdateJobDto } from './dtos/update-job.dto';
 import { JobType } from './job.type';
-import { convertStringIdToObjectId } from "../helpers/generic.function";
-import { USER_MODEL } from 'src/schemas/user/user.schems';
 import { UsersService } from 'src/users/users.service';
 @Injectable()
 export class JobsService {
@@ -20,6 +19,10 @@ export class JobsService {
     }
 
    return await this.jobModel.create({ ...job, employer: user._id });
+  }
+
+  async update(id: string, data: UpdateJobDto): Promise<JobType> {
+    return await this.jobModel.findOneAndUpdate( { _id: id }, data, { new: true });
   }
 
   async getById(id: string): Promise<JobType> {

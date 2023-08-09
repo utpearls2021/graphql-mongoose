@@ -53,5 +53,4 @@ export class UserType {
 
   @Field(() => Address)
   address: Address
-
 }

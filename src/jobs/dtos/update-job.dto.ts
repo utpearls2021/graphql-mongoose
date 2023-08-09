@@ -1,5 +1,14 @@
-import { PartialType, OmitType } from "@nestjs/mapped-types";
 import { CreateJobDto } from "./create-job.dto";
-
-export class UpdateJobDto extends PartialType(CreateJobDto){} // for optional in CreateJobDto update
+import { InputType, Field, ID, PartialType, OmitType} from "@nestjs/graphql";
+@InputType("updateJob")
+export class UpdateJob extends PartialType(CreateJobDto){} // for optional in CreateJobDto update
 //export class UpdateJobDto extends PartialType(OmitType(CreateJobDto, ['userId'])){} // for ommit type UpdateJobDto
+
+@InputType()
+export class UpdateJobDto {
+  @Field(type => ID)
+  id: string;
+
+  @Field(() => UpdateJob)
+  update: UpdateJob
+}

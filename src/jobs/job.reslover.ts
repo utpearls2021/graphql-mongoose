@@ -6,6 +6,7 @@ import { UserType } from "src/users/users.type";
 import { UsersService } from "src/users/users.service";
 import { ResponseJobDto } from "./dtos/response-job.dto";
 import { convertStringIdToObjectId } from "../helpers/generic.function";
+import { UpdateJobDto } from "./dtos/update-job.dto";
 
 @Resolver(of => JobType)
 export class JobReslover {
@@ -26,11 +27,10 @@ export class JobReslover {
     return await this.jobService.create(job);
   }
 
-  // @ResolveField(returns => UserType)
-  // employer(@Parent() job: JobType){
-  //   console.log('job', job);
-  //   const { employer } = job;
-  //   return this.userService.getById(employer);
-  // }
+  @Mutation(returns => JobType, { name: "updateJob"})
+  async updateJob(@Args("job") job: UpdateJobDto){
+    const { id, update } = job;
+    return this.jobService.update(id, JSON.parse(JSON.stringify(update)));
+  }
 
 }

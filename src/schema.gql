@@ -60,6 +60,7 @@ type Mutation {
   createUser(user: CreateUserDto!): User!
   updateUser(user: UpdateUserDto!): User!
   create(job: CreateJobDto!): Job!
+  updateJob(job: UpdateJobDto!): Job!
 }
 
 input CreateUserDto {
@@ -111,4 +112,20 @@ input CreateJobDto {
   tags: [String!]
   salary: String!
   jobType: String!
+}
+
+input UpdateJobDto {
+  id: ID!
+  update: updateJob!
+}
+
+input updateJob {
+  userId: ID
+  title: String
+  companyName: String
+  description: String
+  experience: String
+  tags: [String!]
+  salary: String
+  jobType: String
 }
