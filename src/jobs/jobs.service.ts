@@ -14,6 +14,7 @@ export class JobsService {
     const { userId } = job;
     const user = await this.usersService.getById(userId);
 
+    console.log("user", user);
     if (!user) {
       throw new NotFoundException("user not found");
     }
