@@ -7,6 +7,7 @@ import { MongooseModelModule } from './schemas/mongoose-model.module';
 import { GraphQLModule } from '@nestjs/graphql';
 import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 import { join } from 'path';
+import { CheckBrowserMiddleware } from './middlewares/check-browser.middleware';
 
 @Module({
   imports: [
@@ -14,6 +15,9 @@ import { join } from 'path';
     GraphQLModule.forRoot<ApolloDriverConfig>({
       driver: ApolloDriver,
       autoSchemaFile: join(process.cwd(), 'src/schema.gql'),
+      buildSchemaOptions: {
+        fieldMiddleware: [CheckBrowserMiddleware],
+      },
     }),
     DatabaseModule,
     MongooseModelModule,

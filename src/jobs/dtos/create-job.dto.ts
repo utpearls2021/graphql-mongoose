@@ -2,7 +2,7 @@ import { Field, ID, InputType } from "@nestjs/graphql";
 import { Types } from "mongoose";
 import { UserType } from "src/users/users.type";
 import { JOB_TYPES, JOB_STATUS } from "src/constants/db.constant";
-
+import { CheckBrowserMiddleware } from "../../middlewares/check-browser.middleware";
 @InputType()
 export class CreateJobDto {
   @Field(type => ID)
@@ -11,7 +11,7 @@ export class CreateJobDto {
   @Field()
   title: string
 
-  @Field()
+  @Field({ middleware: [CheckBrowserMiddleware]})
   companyName: string
 
   @Field()

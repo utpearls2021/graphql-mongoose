@@ -15,6 +15,6 @@ export class JobsModule implements OnModuleInit, NestModule {
   }
 
   configure(consumer: MiddlewareConsumer) {
-    consumer.apply(userAgent).forRoutes("graphql")
+    //consumer.apply(userAgent).forRoutes("graphql")
   }
 }
