@@ -1,4 +1,4 @@
-import { Module } from '@nestjs/common';
+import { Module, OnApplicationShutdown, OnModuleInit } from '@nestjs/common';
 import { ConfigModule } from "@nestjs/config";
 import { DatabaseModule } from './db/database.module';
 import { UsersModule } from './users/users.module';
@@ -21,5 +21,13 @@ import { join } from 'path';
     JobsModule
   ],
 })
-export class AppModule {}import { graphql } from 'graphql';
+export class AppModule implements OnModuleInit, OnApplicationShutdown {
+  onModuleInit(){
+    console.log("app module init");
+  }
+
+  onApplicationShutdown(signal? : any) {
+    console.log("app module shutdown",signal);
+  }
+}
 
