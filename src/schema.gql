@@ -49,6 +49,11 @@ type ResponseJobDto {
   jobType: String
 }
 
+type auth {
+  accessToken: String!
+  user: User!
+}
+
 type Query {
   user(id: String!): User!
   users: [User!]!
@@ -61,6 +66,7 @@ type Mutation {
   updateUser(user: UpdateUserDto!): User!
   create(job: CreateJobDto!): Job!
   updateJob(job: UpdateJobDto!): Job!
+  auth(loginInput: LoginInputType!): auth!
 }
 
 input CreateUserDto {
@@ -128,4 +134,9 @@ input updateJob {
   tags: [String!]
   salary: String
   jobType: String
+}
+
+input LoginInputType {
+  email: String!
+  password: String!
 }

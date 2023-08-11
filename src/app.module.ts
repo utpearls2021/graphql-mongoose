@@ -8,6 +8,7 @@ import { GraphQLModule } from '@nestjs/graphql';
 import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 import { join } from 'path';
 import { CheckBrowserMiddleware } from './middlewares/check-browser.middleware';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
   imports: [
@@ -15,14 +16,15 @@ import { CheckBrowserMiddleware } from './middlewares/check-browser.middleware';
     GraphQLModule.forRoot<ApolloDriverConfig>({
       driver: ApolloDriver,
       autoSchemaFile: join(process.cwd(), 'src/schema.gql'),
-      buildSchemaOptions: {
-        fieldMiddleware: [CheckBrowserMiddleware],
-      },
+      // buildSchemaOptions: {
+      //   fieldMiddleware: [CheckBrowserMiddleware],
+      // },
     }),
     DatabaseModule,
     MongooseModelModule,
     UsersModule,
-    JobsModule
+    JobsModule,
+    AuthModule
   ],
 })
 export class AppModule implements OnModuleInit, OnApplicationShutdown {

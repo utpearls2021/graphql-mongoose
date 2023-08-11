@@ -12,6 +12,8 @@ import { BadRequestException, UseFilters, UseGuards } from "@nestjs/common";
 import { CustomExceptionFilter } from "../exceptions/exception.filter";
 import { HttpExceptionFilter } from "../exceptions/http-exception.filter";
 import { CheckBrowserMiddleware } from "src/middlewares/check-browser.middleware";
+import { GqlAuthGuard } from "../auth/gql-auth.guard";
+import { JwtAuthGuard } from "src/auth/jwt-auth.guard";
 
 @Resolver(of => JobType)
 export class JobReslover {
@@ -38,6 +40,7 @@ export class JobReslover {
   }
 
   @Mutation(returns => JobType, { name: "updateJob"})
+  @UseGuards(JwtAuthGuard)
   async updateJob(@Args("job") job: UpdateJobDto){
     const { id, update } = job;
    // console.log("update", update);
